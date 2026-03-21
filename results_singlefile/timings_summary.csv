@@ -1,0 +1,17 @@
+dataset,isConfocal,voxelResolution,wallStride,seconds,filters
+Z_d=0.5_l=[1x1]_s=[256x256].mat,0,16,16,3.9198514,raw/lap/log
+Z_d=0.5_l=[1x1]_s=[256x256].mat,0,16,8,15.147803,raw/lap/log
+Z_d=0.5_l=[1x1]_s=[256x256].mat,0,16,1,1158.7350608,raw/lap/log
+Z_d=0.5_l=[1x1]_s=[256x256].mat,0,32,16,39.4103529,raw/lap/log
+Z_d=0.5_l=[1x1]_s=[256x256].mat,0,32,8,155.8366689,raw/lap/log
+Z_d=0.5_l=[1x1]_s=[256x256].mat,0,64,16,313.8314681,raw/lap/log
+usaf_d=0.5_l=[1x1]_s=[256x256].mat,0,16,16,4.0806381,raw/lap/log
+usaf_d=0.5_l=[1x1]_s=[256x256].mat,0,16,8,15.9952967,raw/lap/log
+usaf_d=0.5_l=[1x1]_s=[256x256].mat,0,16,1,1116.5214476,raw/lap/log
+usaf_d=0.5_l=[1x1]_s=[256x256].mat,0,32,16,39.220121,raw/lap/log
+usaf_d=0.5_l=[1x1]_s=[256x256].mat,0,32,8,157.7246763,raw/lap/log
+usaf_d=0.5_l=[1x1]_s=[256x256].mat,0,64,16,316.359261,raw/lap/log
+bunny_d=0.5_l=[1x1]_s=[256x256].mat,0,32,8,156.2048484,raw/log
+bunny_d=0.5_c=[256x256].mat,1,32,8,143.2562126,raw/log
+bunny_d=0.5_c=[256x256].mat,1,32,8,153.8056012,phasor/log
+usaf_d=0.5_l=[1x1]_s=[256x256].mat,0,32,8,148.6708162,phasor/log

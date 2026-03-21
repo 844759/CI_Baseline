@@ -1,0 +1,14 @@
+Dataset=Z_d=0.5_l=[1x1]_s=[256x256].mat, vox=16, stride=16, time=3.920s
+Dataset=Z_d=0.5_l=[1x1]_s=[256x256].mat, vox=16, stride=8, time=15.148s
+Dataset=Z_d=0.5_l=[1x1]_s=[256x256].mat, vox=16, stride=1, time=1158.735s
+Dataset=Z_d=0.5_l=[1x1]_s=[256x256].mat, vox=32, stride=16, time=39.410s
+Dataset=Z_d=0.5_l=[1x1]_s=[256x256].mat, vox=32, stride=8, time=155.837s
+Dataset=Z_d=0.5_l=[1x1]_s=[256x256].mat, vox=64, stride=16, time=313.831s
+
+
+Dataset=usaf_d=0.5_l=[1x1]_s=[256x256].mat, vox=16, stride=16, time=4.081s
+Dataset=usaf_d=0.5_l=[1x1]_s=[256x256].mat, vox=16, stride=8, time=15.995s
+Dataset=usaf_d=0.5_l=[1x1]_s=[256x256].mat, vox=16, stride=1, time=1116.521s
+Dataset=usaf_d=0.5_l=[1x1]_s=[256x256].mat, vox=32, stride=16, time=39.220s
+Dataset=usaf_d=0.5_l=[1x1]_s=[256x256].mat, vox=32, stride=8, time=157.725s
+Dataset=usaf_d=0.5_l=[1x1]_s=[256x256].mat, vox=64, stride=16, time=316.359s
