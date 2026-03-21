@@ -643,20 +643,24 @@ end
 
 
 function render_volume_views(G, outPrefix, plotTitle)
-%RENDER_VOLUME_VIEWS Guarda varias proyecciones MIP útiles para la memoria.
 
 if nargin < 3
     plotTitle = 'Reconstrucción';
 end
 
-save_projection(front_projection(G, 3), [outPrefix, '_front.png'], [plotTitle, ' - vista frontal']);
-save_projection(front_projection(G, 2), [outPrefix, '_top.png'],   [plotTitle, ' - vista superior']);
-save_projection(front_projection(G, 1), [outPrefix, '_side.png'],  [plotTitle, ' - vista lateral']);
+% Frente: colapsar profundidad (y)
+save_projection(squeeze(max(G, [], 2)), [outPrefix, '_front.png'], [plotTitle, ' - vista frontal']);
+
+% Superior: colapsar z
+save_projection(squeeze(max(G, [], 3)), [outPrefix, '_top.png'], [plotTitle, ' - vista superior']);
+
+% Lateral: colapsar x
+save_projection(squeeze(max(G, [], 1)), [outPrefix, '_side.png'], [plotTitle, ' - vista lateral']);
 end
 
 function save_projection(P, savePath, titleStr)
 fig = figure('Visible', 'off', 'Color', 'w');
-imagesc(P);
+imagesc(P.');
 axis image;
 colormap(hot);
 colorbar;
