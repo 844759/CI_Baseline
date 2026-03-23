@@ -7,7 +7,7 @@ cfg = default_cfg();
 
 % Choose one:
 % "transients", "z_usaf", "bunny", "attenuation", "phasor"
-cfg.section = "phasor";
+cfg.section = "z_usaf";
 
 switch cfg.section
     case "transients"

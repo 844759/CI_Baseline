@@ -40,15 +40,22 @@ cfg.bunny.wallStride = 8;
 cfg.attenuation.voxelRes = 32;
 cfg.attenuation.wallStride = 8;
 
-% Sweep corto para phasor/Morlet
+% Sweep phasor/Morlet corregido segun el guion.
 cfg.phasor.voxelRes = 32;
 cfg.phasor.wallStride = 8;
-cfg.phasor.lambdaFactors = [1.5 2.5 3.5];
-cfg.phasor.sigmaFactors = [0.5 1.0 1.5];
+
+% lambda_c debe ser al menos 2 * spacing_efectivo.
+% Estos multiplicadores se aplican sobre lambdaMin = 2 * spacingEff.
+cfg.phasor.lambdaMultipliers = [1 2 4];
+
+% Sigma se toma con los tres valores recomendados por el enunciado.
+cfg.phasor.useRecommendedSigmas = true;
+
 cfg.phasor.applyLoG = true;
+cfg.phasor.logSigma = 1.0;
+cfg.phasor.saveBaselineConfocalLoG = true;
 
 % La geometria de estos datos suele tener la profundidad en Y.
-% Por eso la "vista frontal" recomendable colapsa Y.
 cfg.render.frontCollapseDim = 2;
 cfg.render.topCollapseDim = 3;
 cfg.render.sideCollapseDim = 1;

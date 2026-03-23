@@ -1,0 +1,4 @@
+baseline = confocal backprojection + LoG
+voxelRes = 32
+wallStride = 8
+elapsed = 116.78679450

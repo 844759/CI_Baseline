@@ -1,0 +1,8 @@
+lambdaC = 0.12548000
+sigma   = 0.12548000
+omegaC  = 7.96939728
+spacingEff = 0.03137000
+lambdaMin = 0.06274000
+voxelRes = 32
+wallStride = 8
+elapsed = 116.10834690
