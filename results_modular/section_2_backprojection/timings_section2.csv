@@ -1,0 +1,13 @@
+dataset,isConfocal,voxelResolution,wallStride,seconds,filters
+Z_d=0.5_l=[1x1]_s=[256x256].mat,0,16,16,3.6057671,raw/lap/log
+Z_d=0.5_l=[1x1]_s=[256x256].mat,0,16,8,14.3059974,raw/lap/log
+Z_d=0.5_l=[1x1]_s=[256x256].mat,0,16,1,927.9141005,raw/lap/log
+Z_d=0.5_l=[1x1]_s=[256x256].mat,0,32,16,28.7704207,raw/lap/log
+Z_d=0.5_l=[1x1]_s=[256x256].mat,0,32,8,114.4276125,raw/lap/log
+Z_d=0.5_l=[1x1]_s=[256x256].mat,0,64,16,228.2207219,raw/lap/log
+usaf_d=0.5_l=[1x1]_s=[256x256].mat,0,16,16,3.6232516,raw/lap/log
+usaf_d=0.5_l=[1x1]_s=[256x256].mat,0,16,8,14.2230855,raw/lap/log
+usaf_d=0.5_l=[1x1]_s=[256x256].mat,0,16,1,946.8239247,raw/lap/log
+usaf_d=0.5_l=[1x1]_s=[256x256].mat,0,32,16,30.2972548,raw/lap/log
+usaf_d=0.5_l=[1x1]_s=[256x256].mat,0,32,8,120.6818393,raw/lap/log
+usaf_d=0.5_l=[1x1]_s=[256x256].mat,0,64,16,243.7751069,raw/lap/log
