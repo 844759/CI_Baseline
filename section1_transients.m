@@ -1,5 +1,5 @@
 function section1_transients(cfg)
-%SECTION1_TRANSIENTS Genera cortes x-t e y-t para todos los datasets presentes.
+%SECTION1_TRANSIENTS Visualize the transient slices of the datasets.
 
 outDir = fullfile(cfg.resultsDir, 'section_1_transients');
 ensure_dir(outDir);
@@ -15,9 +15,9 @@ for k = 1:numel(candidates)
     if exist(candidates{k}, 'file')
         ds = load_nlos_dataset(candidates{k});
         visualize_transient_slices(ds, outDir);
-        fprintf('[OK] Transientes: %s\n', ds.fileName);
+        fprintf('[OK] Transient: %s\n', ds.fileName);
     else
-        fprintf('[WARN] No se encontro %s\n', candidates{k});
+        fprintf('[WARN] not found: %s\n', candidates{k});
     end
 end
 end

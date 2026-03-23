@@ -1,12 +1,5 @@
 function section5_phasor_sweep(cfg)
 %SECTION5_PHASOR_SWEEP
-% Barrido corregido de parametros Morlet/phasor para bunny confocal.
-%
-% Correcciones respecto a la version anterior:
-% - lambda_c se calcula usando el spacing EFECTIVO tras wallStride.
-% - lambda_c cumple lambda_c >= 2 * spacing_efectivo.
-% - sigma sigue el rango recomendado del guion.
-% - se guarda una baseline confocal LoG sin phasor para comparar.
 
 outDir = fullfile(cfg.resultsDir, 'section_5_phasor');
 ensure_dir(outDir);

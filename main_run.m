@@ -1,5 +1,5 @@
 %% main_run.m
-% NLOS Assignment 4 - modular launcher
+% NLOS Assignment 4
 
 clear; clc;
 
