@@ -1,0 +1,7 @@
+dataset = bunny_d=0.5_l=[1x1]_s=[256x256].mat
+voxelRes = 32
+wallStride = 8
+distanceExponent = 0.5000
+cosineExponent = 0.0000
+cosineMin = 0.3000
+maxWeight = 2.0000

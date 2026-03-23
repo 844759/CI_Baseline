@@ -1,10 +1,19 @@
 function [G, meta] = nlos_backprojection(ds, voxelResolution, opts)
-%NLOS_BACKPROJECTION Backprojection naive confocal/no confocal.
+%NLOS_BACKPROJECTION Backprojection naive para datasets confocales y no confocales.
+%
+% Extension: compensacion de atenuacion configurable.
 %
 % opts.wallStride
 % opts.compensateAttenuation
 % opts.useAbsAfterComplex
 % opts.overrideH
+%
+% Nuevos campos opcionales:
+% opts.attenuationMode = 'soft' | 'full'
+% opts.attenuationDistanceExponent (default soft=1.0, full=2.0)
+% opts.attenuationCosineExponent  (default soft=0.5, full=1.0 confocal / 1.0 per wall)
+% opts.attenuationCosineMin       (default 0.20)
+% opts.attenuationMaxWeight       (default 8.0)
 
 if nargin < 3
     opts = struct();
@@ -16,6 +25,24 @@ if ~isfield(opts, 'overrideH') || isempty(opts.overrideH)
     H = ds.H;
 else
     H = opts.overrideH;
+end
+
+if ~isfield(opts, 'attenuationMode'), opts.attenuationMode = 'soft'; end
+if ~isfield(opts, 'attenuationCosineMin'), opts.attenuationCosineMin = 0.20; end
+if ~isfield(opts, 'attenuationMaxWeight'), opts.attenuationMaxWeight = 8.0; end
+if ~isfield(opts, 'attenuationDistanceExponent')
+    if strcmpi(opts.attenuationMode, 'full')
+        opts.attenuationDistanceExponent = 2.0;
+    else
+        opts.attenuationDistanceExponent = 1.0;
+    end
+end
+if ~isfield(opts, 'attenuationCosineExponent')
+    if strcmpi(opts.attenuationMode, 'full')
+        opts.attenuationCosineExponent = 1.0;
+    else
+        opts.attenuationCosineExponent = 0.5;
+    end
 end
 
 if isscalar(voxelResolution)
@@ -48,7 +75,8 @@ stride = opts.wallStride;
 ix = 1:stride:Nx;
 iy = 1:stride:Ny;
 
-for iv = 1:size(voxels, 1)
+numVox = size(voxels, 1);
+for iv = 1:numVox
     xv = voxels(iv, :);
     accum = 0;
 
@@ -77,8 +105,8 @@ for iv = 1:size(voxels, 1)
 
             if opts.compensateAttenuation
                 dirWall = safe_normalize(xv - xl);
-                cosWall = max(abs(dot(nWall, dirWall)), 1e-6);
-                weight = (d2^2 * d3^2) / (cosWall^2);
+                cosWall = max(abs(dot(nWall, dirWall)), opts.attenuationCosineMin);
+                weight = attenuation_weight_confocal(d2, d3, cosWall, opts);
                 val = val .* weight;
             end
 
@@ -105,7 +133,8 @@ ily = 1:stride:Ly;
 isx = 1:stride:Sx;
 isy = 1:stride:Sy;
 
-for iv = 1:size(voxels, 1)
+numVox = size(voxels, 1);
+for iv = 1:numVox
     xv = voxels(iv, :);
     accum = 0;
 
@@ -139,9 +168,9 @@ for iv = 1:size(voxels, 1)
                     if opts.compensateAttenuation
                         dirL = safe_normalize(xv - xl);
                         dirS = safe_normalize(xv - xs);
-                        cosL = max(abs(dot(nL, dirL)), 1e-6);
-                        cosS = max(abs(dot(nS, dirS)), 1e-6);
-                        weight = (d2^2 * d3^2) / (cosL * cosS);
+                        cosL = max(abs(dot(nL, dirL)), opts.attenuationCosineMin);
+                        cosS = max(abs(dot(nS, dirS)), opts.attenuationCosineMin);
+                        weight = attenuation_weight_nonconfocal(d2, d3, cosL, cosS, opts);
                         val = val .* weight;
                     end
 
@@ -157,6 +186,22 @@ end
 G = reshape(G, voxelResolution);
 meta.numLaserSamples = numel(ilx) * numel(ily);
 meta.numSpadSamples = numel(isx) * numel(isy);
+end
+
+function w = attenuation_weight_confocal(d2, d3, cosWall, opts)
+dExp = opts.attenuationDistanceExponent;
+cExp = opts.attenuationCosineExponent;
+
+w = ((d2 * d3) ^ dExp) / (cosWall ^ (2 * cExp));
+w = min(w, opts.attenuationMaxWeight);
+end
+
+function w = attenuation_weight_nonconfocal(d2, d3, cosL, cosS, opts)
+dExp = opts.attenuationDistanceExponent;
+cExp = opts.attenuationCosineExponent;
+
+w = ((d2 * d3) ^ dExp) / ((cosL ^ cExp) * (cosS ^ cExp));
+w = min(w, opts.attenuationMaxWeight);
 end
 
 function [xv, yv, zv] = voxel_centers(volumePosition, volumeSize, voxelResolution)
