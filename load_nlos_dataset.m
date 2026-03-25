@@ -1,5 +1,5 @@
 function ds = load_nlos_dataset(filePath)
-%LOAD_NLOS_DATASET Carga un .mat y normaliza el acceso a sus campos.
+%LOAD_NLOS_DATASET
 
 raw = load(filePath);
 rawFields = fieldnames(raw);

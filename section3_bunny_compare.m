@@ -1,5 +1,5 @@
 function section3_bunny_compare(cfg)
-%SECTION3_BUNNY_COMPARE Compara bunny no confocal vs confocal.
+%SECTION3_BUNNY_COMPARE
 
 outDir = fullfile(cfg.resultsDir, 'section_3_bunny');
 ensure_dir(outDir);

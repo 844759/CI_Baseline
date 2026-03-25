@@ -1,5 +1,5 @@
 function section2_backprojection_z_usaf(cfg)
-%SECTION2_BACKPROJECTION_Z_USAF Ejecuta barridos en Z y usaf.
+%SECTION2_BACKPROJECTION_Z_USAF
 
 outDir = fullfile(cfg.resultsDir, 'section_2_backprojection');
 ensure_dir(outDir);

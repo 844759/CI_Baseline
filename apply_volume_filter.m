@@ -1,5 +1,5 @@
 function Gf = apply_volume_filter(G, mode, sigma)
-%APPLY_VOLUME_FILTER Filtro 3D laplaciano o LoG.
+%APPLY_VOLUME_FILTER
 
 if nargin < 3
     sigma = 1.0;

@@ -1,5 +1,5 @@
 function visualize_transient_slices(ds, outDir)
-%VISUALIZE_TRANSIENT_SLICES Guarda cortes x-t e y-t.
+%VISUALIZE_TRANSIENT_SLICES
 
 ensure_dir(outDir);
 

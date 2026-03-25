@@ -1,14 +1,5 @@
 function [Hf, params] = morlet_filter_temporal(ds, lambdaC, sigma)
-%MORLET_FILTER_TEMPORAL Filtra H a lo largo del tiempo con una onda de Morlet.
-%
-% Implementa:
-%   H' = H *t Km
-% con
-%   Km(t) = exp(2j*pi*Omega_c*t) * exp(-(t.^2)/(2*sigma^2))
-%
-% Nota: el filtro se aplica solo una vez sobre la dimension temporal,
-% tal y como indica el guion. El valor absoluto debe aplicarse despues,
-% sobre la reconstruccion compleja, no sobre Hf.
+%MORLET_FILTER_TEMPORAL
 
 if nargin < 2 || isempty(lambdaC)
     spacing = estimate_wall_spacing(ds, 1);
@@ -22,8 +13,7 @@ omegaC = 1 / lambdaC;
 timeDim = ndims(ds.H);
 T = size(ds.H, timeDim);
 
-% El dominio temporal del dataset esta en unidades de distancia optica.
-% Centramos el kernel en 0 para hacer convolucion "same".
+
 t = ((0:T-1) - floor(T/2)) * ds.deltaT;
 Km = exp(2j*pi*omegaC*t) .* exp(-(t.^2) / (2*sigma^2));
 Km = Km(:).';

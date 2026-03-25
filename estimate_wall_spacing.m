@@ -1,5 +1,5 @@
 function spacing = estimate_wall_spacing(ds, stride)
-%ESTIMATE_WALL_SPACING Estima separacion entre puntos de pared.
+%ESTIMATE_WALL_SPACING
 
 if nargin < 2
     stride = 1;

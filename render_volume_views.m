@@ -1,5 +1,5 @@
 function render_volume_views(G, outPrefix, plotTitle, renderCfg)
-%RENDER_VOLUME_VIEWS Guarda varias MIP del volumen.
+%RENDER_VOLUME_VIEWS
 
 if nargin < 3
     plotTitle = 'Reconstruccion';

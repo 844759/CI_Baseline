@@ -1,19 +1,5 @@
 function [G, meta] = nlos_backprojection(ds, voxelResolution, opts)
-%NLOS_BACKPROJECTION Backprojection naive para datasets confocales y no confocales.
-%
-% Extension: compensacion de atenuacion configurable.
-%
-% opts.wallStride
-% opts.compensateAttenuation
-% opts.useAbsAfterComplex
-% opts.overrideH
-%
-% Nuevos campos opcionales:
-% opts.attenuationMode = 'soft' | 'full'
-% opts.attenuationDistanceExponent (default soft=1.0, full=2.0)
-% opts.attenuationCosineExponent  (default soft=0.5, full=1.0 confocal / 1.0 per wall)
-% opts.attenuationCosineMin       (default 0.20)
-% opts.attenuationMaxWeight       (default 8.0)
+%NLOS_BACKPROJECTION
 
 if nargin < 3
     opts = struct();
